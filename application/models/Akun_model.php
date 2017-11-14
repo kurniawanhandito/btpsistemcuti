@@ -27,4 +27,10 @@ class Akun_model extends CI_Model {
 		$res = $this->db->update('akun', $data, $where);
 		return $res;
 	}
+
+	public function login($where)
+	{
+		$query = $this->db->get_where('akun', $where);
+		return $query;
+	}
 }
