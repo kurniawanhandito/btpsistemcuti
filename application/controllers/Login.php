@@ -24,6 +24,6 @@ class Login extends CI_Controller {
 	}
 
 	public function do_login(){
-		redirect(base_url('direktur/dashboard'));
+		
 	}
 }
