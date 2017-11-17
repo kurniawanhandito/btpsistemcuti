@@ -18,8 +18,34 @@ class Dashboard extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	public	function __construct()
+	{
+		parent::__construct();
+
+		if($this->session->userdata('status') != "login")
+		{
+			$this->session->set_flashdata('pesan','
+				<div class="mx-auto alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 3rem; max-width: 25rem;">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+			  		Anda harus login terlebih dahulu !
+				</div>
+			');
+			redirect(base_url());
+		}
+	}
+
+
 	public function index()
 	{
-		echo "Dashboard Direktur";
+		$comp = array(
+			"content" => $this->load->view('direktur/dashboard',array(
+				'name' => $this->session->userdata('name'),
+			),true),
+			"footer" => $this->load->view('footer',array(),true)
+		);
+		$this->load->view('index', $comp);
 	}
 }
