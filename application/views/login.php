@@ -9,7 +9,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="">
 		<meta name="author" content="">
-	  	<title>BTP - Sistem Cuti</title>
+	  	<title>BTP Sistem Cuti | Login</title>
 	  	<!-- Bootstrap core CSS-->
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/vendor/bootstrap/css/bootstrap.min.css');?>" />
 		<!-- Custom fonts for this template-->
