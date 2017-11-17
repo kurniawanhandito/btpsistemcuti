@@ -27,6 +27,7 @@ class Login extends CI_Controller {
 	{
 		$this->load->model('akun_model');
 		$this->load->model('kerja_model');
+		$this->load->model('umum_model');
 
 		$nip = $this->input->post('nip');
 		$password = $this->input->post('password');
@@ -38,51 +39,55 @@ class Login extends CI_Controller {
 		if ($cek->num_rows() == 1) 
 		{
 			$akun_data = $this->akun_model->get_data(" where nip ='$nip'");
+			$umum_data = $this->umum_model->get_data(" where nip ='$nip'");
 
 			foreach ($akun_data as $key => $akun)
 			{
-				if ($this->bcrypt->check_password($password, $akun['password']))
-				{
-					$data_session['status'] = 'login';
-					$data_session['nip'] = $akun['nip'];
-					$this->session->set_userdata($data_session);
-					
-					$kerja_data = $this->kerja_model->get_data(" where nip ='$akun[nip]'");
+				foreach ($umum_data as $key => $umum) {
+					if ($this->bcrypt->check_password($password, $akun['password']))
+					{
+						$data_session['status'] = 'login';
+						$data_session['nip'] = $akun['nip'];
+						$data_session['nama'] = $umum['nama'];
+						$this->session->set_userdata($data_session);
+						
+						$kerja_data = $this->kerja_model->get_data(" where nip ='$akun[nip]'");
 
-					foreach ($kerja_data as $key => $kerja) {
-						if ($kerja['posisi'] == 'staf' || $kerja['posisi'] == 'asman') {
-							redirect(base_url('staf/dashboard'));
-						} elseif ($kerja['posisi'] == 'manajer') {
-							redirect(base_url('manajer/dashboard'));
-						} elseif ($kerja['posisi'] == 'gm' || $kerja['posisi'] == 'sm') {
-							redirect(base_url('gm/dashboard'));
-						} elseif ($kerja['posisi'] == 'direktur' || $kerja['posisi'] == 'direktur') {
-							redirect(base_url('direktur/dashboard'));
-						} elseif ($kerja['posisi'] == 'hrd') {
-							redirect(base_url('hrd/dashboard'));
-						} else {
-							$this->session->set_flashdata('pesan','
-								<div class="mx-auto alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 3rem; max-width: 25rem;">
-									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-							  		1
-								</div>
-							');
-							redirect(base_url());
+						foreach ($kerja_data as $key => $kerja) {
+							if ($kerja['posisi'] == 'staf' || $kerja['posisi'] == 'asman') {
+								redirect(base_url('staf/dashboard'));
+							} elseif ($kerja['posisi'] == 'manajer') {
+								redirect(base_url('manajer/dashboard'));
+							} elseif ($kerja['posisi'] == 'gm' || $kerja['posisi'] == 'sm') {
+								redirect(base_url('gm/dashboard'));
+							} elseif ($kerja['posisi'] == 'direktur' || $kerja['posisi'] == 'direktur') {
+								redirect(base_url('direktur/dashboard'));
+							} elseif ($kerja['posisi'] == 'hrd') {
+								redirect(base_url('hrd/dashboard'));
+							} else {
+								$this->session->set_flashdata('pesan','
+									<div class="mx-auto alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 3rem; max-width: 25rem;">
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+								  		1
+									</div>
+								');
+								redirect(base_url());
+							}
 						}
+					} else
+					{
+						$this->session->set_flashdata('pesan','
+							<div class="mx-auto alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 3rem; max-width: 25rem;">
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+						  		2
+							</div>
+						');
+						redirect(base_url());
 					}
-				} else
-				{
-					$this->session->set_flashdata('pesan','
-						<div class="mx-auto alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 3rem; max-width: 25rem;">
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-					  		2
-						</div>
-					');
-					redirect(base_url());
 				}
 			}
 		} else
