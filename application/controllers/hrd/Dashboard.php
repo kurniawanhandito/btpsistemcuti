@@ -43,8 +43,8 @@ class Dashboard extends CI_Controller {
 			"content" => $this->load->view('hrd/dashboard',array(
 				'nama' => $this->session->userdata('nama'),
 			),true),
-			"footer" => $this->load->view('footer',array(),true)
+			"footer" => $this->load->view('hrd/footer',array(),true)
 		);
-		$this->load->view('index', $comp);
+		$this->load->view('hrd/index', $comp);
 	}
 }
