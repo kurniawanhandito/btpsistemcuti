@@ -10,6 +10,8 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 	  	<title>BTP Sistem Cuti | Login</title>
+	  	<!-- Icon -->
+		<link rel="icon" href="<?php echo base_url('asset/img/icon.png');?>" />
 	  	<!-- Bootstrap core CSS-->
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/vendor/bootstrap/css/bootstrap.min.css');?>" />
 		<!-- Custom fonts for this template-->
