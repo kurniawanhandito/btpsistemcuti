@@ -28,13 +28,13 @@
 				</div>
 			</div>
 			<!-- Bootstrap core JavaScript-->
-			<script src="vendor/jquery/jquery.min.js"></script>
-			<script src="vendor/popper/popper.min.js"></script>
-			<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+			<script type="text/javascript" src="<?php echo base_url('asset/vendor/jquery/jquery.min.js');?>"></script>
+			<script type="text/javascript" src="<?php echo base_url('asset/vendor/popper/popper.min.js');?>"></script>
+			<script type="text/javascript" src="<?php echo base_url('asset/vendor/bootstrap/js/bootstrap.min.js');?>"></script>
 			<!-- Core plugin JavaScript-->
-			<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+			<script type="text/javascript" src="<?php echo base_url('asset/vendor/jquery-easing/jquery.easing.min.js');?>"></script>
 			<!-- Custom scripts for all pages-->
-			<script src="js/sb-admin.min.js"></script>
+			<script type="text/javascript" src="<?php echo base_url('asset/js/sb-admin.min.js');?>"></script>
 		</div>
 	</body>
 
