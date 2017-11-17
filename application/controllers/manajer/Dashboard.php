@@ -41,7 +41,7 @@ class Dashboard extends CI_Controller {
 	{
 		$comp = array(
 			"content" => $this->load->view('manajer/dashboard',array(
-				'name' => $this->session->userdata('name'),
+				'nama' => $this->session->userdata('nama'),
 			),true),
 			"footer" => $this->load->view('footer',array(),true)
 		);
