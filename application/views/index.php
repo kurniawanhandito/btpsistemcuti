@@ -9,11 +9,11 @@
 	<meta name="author" content="">
 	<title>BTP Sistem Cuti | Dashboard</title>
 	<!-- Bootstrap core CSS-->
-	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/vendor/bootstrap/css/bootstrap.min.css');?>" />
 	<!-- Custom fonts for this template-->
-	<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/vendor/font-awesome/css/font-awesome.min.css');?>" />
 	<!-- Custom styles for this template-->
-	<link href="css/sb-admin.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/css/sb-admin.css');?>" />
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
